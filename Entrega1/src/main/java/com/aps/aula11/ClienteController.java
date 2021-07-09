@@ -12,7 +12,7 @@ public class ClienteController {
     @GetMapping("/homepage")
 
     private static void connect() {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/Spring/src/main/resources/banco.db")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:E:/Meus Documentos/Documentos/Códigos/APS/APS/Entrega1/src/main/resources/banco.db")) {
             System.out.println("Conexão realizada !!!!");
             Statement statement = connection.createStatement();
 
