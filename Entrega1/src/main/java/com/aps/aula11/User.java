@@ -1,5 +1,7 @@
 package com.aps.aula11;
+import java.util.ArrayList;
 import com.aps.aula11.Date;
+import com.aps.aula11.Playlist;
 
 public class User {
     private String email;
@@ -7,6 +9,8 @@ public class User {
     private String nickname;
     private boolean isVIP;
     private Date durationVIP;
+    private ArrayList<Playlist> playlists;
+    private int userId;
 
     public User(String email, String password, String nickname, int isVIP, Date durationVIP){
         this.email = email;
@@ -43,4 +47,16 @@ public class User {
     public void setIsVIP(boolean isVIP){
         this.isVIP = isVIP;
     }
+
+	public ArrayList<Playlist> getPlaylists() {
+		return playlists;
+	}
+
+	public void addOnePlaylist(Playlist playlist) {
+		this.playlists.add(playlist);
+	}
+
+	public int getUserId() {
+		return userId;
+	}
 }

@@ -18,9 +18,9 @@ public class RepositorioUser implements IRepositorioUser {
         ArrayList<User> array = new ArrayList<User>();
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db")) {
             Statement statement = connection.createStatement();
-            System.out.println("Conexão realizada!");
             
-            statement.execute("CREATE TABLE IF NOT EXISTS USER( EMAIL VARCHAR NOT NULL UNIQUE, PASSWORD VARCHAR NOT NULL UNIQUE, NICKNAME VARCHAR, ISVIP INTEGER, DURATIONVIP VARCHAR)");
+            statement.execute("CREATE TABLE IF NOT EXISTS USER( USERID INT PRIMARY KEY, EMAIL VARCHAR NOT NULL UNIQUE, PASSWORD VARCHAR NOT NULL UNIQUE, NICKNAME VARCHAR, ISVIP INTEGER, DURATIONVIP VARCHAR )");
+            System.out.println("Conexão banco de users realizada!");
             // statement.execute("INSERT INTO USER( EMAIL, PASSWORD, NICKNAME, ISVIP, DURATIONVIP ) VALUES ('vss2@cin.ufpe.br', '123456', 'Vitor', 0, '0/0/0'), ('carlos@cin.ufpe.br', '987654', 'Carlos', 1, '31/12/2021')");
             
             PreparedStatement stmt = connection.prepareStatement("select * from USER");
