@@ -11,20 +11,34 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            font-size: 25px;
+        }
+        input {
+            background-color: black;
+            color: #DB1E2E;
+            border: none;
+            border-bottom-color: #DB1E2E;
+            border-bottom-style: none;
+            border-bottom-width: medium;
+            border-bottom: solid #DB1E2E;
+            border-bottom-width: 4px;
+            font-size: 25px;
         }
         button {
+            font-size: 25px;
             color: white;
             background-color: #DB1E2E;
             border: none;
             border-radius: 5px;
+            cursor: pointer;
         }
     </style>
     <body>
         <div>
-            <form>
-                <input placeholder="Email">
-                <input placeholder="Senha">
-                <button type="submit">Login</button>
+            <form th:action="@{/homepage}" th:object="${User}" method="post">
+                <input placeholder="Email" type="email" name="email">
+                <input placeholder="Senha" type="password" name="password">
+                <input type="submit" value="Login">
             </form>
             <br>
             <br>

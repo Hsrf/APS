@@ -1,7 +1,7 @@
 package com.aps.aula11;
 import java.util.ArrayList;
 
-public interface IRepositorioUser {
+public interface IRepositorioUser extends AbstractFactory_Repositorio {
     public ArrayList<User> getUsers();
 
     // https://www.devmedia.com.br/java-interface-aprenda-a-usar-corretamente/28798

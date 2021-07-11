@@ -1,6 +1,9 @@
 package com.aps.aula11;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.sql.*;
+import com.aps.aula11.Singleton_SQL;
+import com.aps.aula11.IRepositorioUser;
 import com.aps.aula11.User;
 
 public class RepositorioUser implements IRepositorioUser {
@@ -12,6 +15,36 @@ public class RepositorioUser implements IRepositorioUser {
     // Lendo os registros
     // PreparedStatement stmt = connection.prepareStatement("select * from USER");
     // ResultSet resultSet = stmt.executeQuery();
+
+    public boolean getUser(String email, String password){
+        boolean answer = false;
+
+        try(Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db")){
+            Statement statement = connection.createStatement();
+            PreparedStatement stmt = connection.prepareStatement(
+                "SELECT EMAIL " +
+                "FROM USER " +
+                "WHERE EMAIL = '" + email + "'" +
+                "AND PASSWORD = '" + password + "'" + 
+                ";"
+            );
+            ResultSet resultSet = stmt.executeQuery();
+            
+            int size = 0;
+            while(resultSet.next()){
+                size++;
+            }
+            if(size == 0){
+                answer = false;
+            } else {
+                answer = true;
+            }
+
+        } catch (SQLException e) { System.out.println(e.getMessage()); }
+        
+        return answer;
+
+    }
 
     @Override
     public ArrayList<User> getUsers(){
@@ -50,4 +83,11 @@ public class RepositorioUser implements IRepositorioUser {
     public void main(){
         System.out.println("Repositório criado");
     }
+
+	@Override
+	public Deque<Integer> getMusicsFromPlaylist(int playlistId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

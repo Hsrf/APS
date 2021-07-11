@@ -1,14 +1,13 @@
 package com.aps.aula11;
 import java.util.Deque;
 import java.util.ArrayDeque;
-import com.aps.aula11.Date;
 import com.aps.aula11.Playlist;
-import com.aps.aula11.SQLAuxiliary;
+import com.aps.aula11.Singleton_SQL;
 import java.sql.*;
 
 public class RepositorioPlaylist implements IRepositorioPlaylist {
 
-    @Override
+	@Override
 	public Deque<Integer> getMusicsFromPlaylist(int playlistId){
         Deque<Integer> deque= new ArrayDeque<Integer>();
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db")) {
