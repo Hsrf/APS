@@ -58,11 +58,26 @@
             padding: 10px;
             cursor: pointer;
         }
-        h3{
+        h4 {
             color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
         }
         div.navbar {
             height: 80%;
+        }
+        div.bottombar{
+            background: #DB1E2E;
+            min-width: 100%;
+            position: absolute;
+            bottom: 5%;
+        }
+        div.player {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding-bottom: 3%;
         }
     </style>
     <body>
@@ -72,15 +87,19 @@
                     <li>Minhas Playlists</li>
                     <li>Albuns</li>
                     <li>Artistas</li>
+                    <li>Configurações</li>
+                    <li>Sair</li>
                 </ul>
             </div>
         </div>
         <div class="bottombar">
-            <!-- <span th:text="Reproduzindo agora:"></span> -->
-            <h3>Reproduzindo agora: </h3>
-            <button>⏮️</button>
-            <button>⏯️</button>
-            <button>⏭️</button>
+            <h4>Reproduzindo agora</h4>
+            <!-- <span th:text="${Music.name}"></span> -->
+            <div class="player">
+                <button>⏮️</button>
+                <button>⏯️</button>
+                <button>⏭️</button>
+            </div>
         </div>
     </body>
 </html>
