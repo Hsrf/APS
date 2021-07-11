@@ -1,3 +1,7 @@
 *.class
 *.lst
 *.jar
+*.original
+/target/
+/.metadata
+/.settings
