@@ -5,9 +5,9 @@ import com.aps.aula11.Playlist;
 import com.aps.aula11.Singleton_SQL;
 import java.sql.*;
 
-public class RepositorioPlaylist implements IRepositorioPlaylist {
+public class RepositoryPlaylist implements IRepositoryPlaylist {
 
-	@Override
+    @Override
 	public Deque<Integer> getMusicsFromPlaylist(int playlistId){
         Deque<Integer> deque= new ArrayDeque<Integer>();
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db")) {

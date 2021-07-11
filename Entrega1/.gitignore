@@ -2,6 +2,6 @@
 *.lst
 *.jar
 *.original
-/target/
+target/
 /.metadata
 /.settings

@@ -27,7 +27,7 @@ public final class Singleton_SQL {
             rs.last();
             return rs.getRow() > 0;
         } catch(SQLException ex) {
-            // Logger.getLogger(SQLite.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return false;
     }

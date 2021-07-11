@@ -3,13 +3,12 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.sql.*;
 import com.aps.aula11.Singleton_SQL;
-import com.aps.aula11.IRepositorioUser;
+import com.aps.aula11.IRepositoryUser;
 import com.aps.aula11.User;
 
-public class RepositorioUser implements IRepositorioUser {
+public class RepositoryUser implements IRepositoryUser {
     // Como usar SQLite
     // Inserindo registros
-    // statement.execute("INSERT INTO USER( EMAIL, SENHA ) VALUES ('VITOR', '123456'), ('CARLOS', '987654')");
     // Criando uma tabela
     // statement.execute("CREATE TABLE IF NOT EXISTS USER( EMAIL VARCHAR NOT NULL UNIQUE, SENHA NOT NULL UNIQUE, NICKNAME VARCHAR, ISVIP INTEGER, DURATIONVIP VARCHAR)");
     // Lendo os registros
@@ -18,9 +17,13 @@ public class RepositorioUser implements IRepositorioUser {
 
     public boolean getUser(String email, String password){
         boolean answer = false;
+        String vitorDatabasePath = "jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db";
+        String teixaDatabasePath = "jdbc:sqlite:E:/Meus Documentos/Documentos/Códigos/APS/APS/Entrega1/src/main/resources/banco.db";
+        String hugoDatabasePath = "jdbc:sqlite:/home/hsrf/Desktop/PersonalProjects/APS/Entrega1/src/main/resources/banco.db";
 
-        try(Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db")){
+        try(Connection connection = DriverManager.getConnection(hugoDatabasePath)){
             Statement statement = connection.createStatement();
+            // statement.execute("INSERT INTO USER( EMAIL, PASSWORD ) VALUES ('teste@cin', 'teste')");
             PreparedStatement stmt = connection.prepareStatement(
                 "SELECT EMAIL " +
                 "FROM USER " +
@@ -29,7 +32,6 @@ public class RepositorioUser implements IRepositorioUser {
                 ";"
             );
             ResultSet resultSet = stmt.executeQuery();
-            
             int size = 0;
             while(resultSet.next()){
                 size++;
@@ -42,6 +44,7 @@ public class RepositorioUser implements IRepositorioUser {
 
         } catch (SQLException e) { System.out.println(e.getMessage()); }
         
+        if(!answer) System.out.printf("Login error: "+ email + " " + password + " " + "\n\n");
         return answer;
 
     }
@@ -49,12 +52,14 @@ public class RepositorioUser implements IRepositorioUser {
     @Override
     public ArrayList<User> getUsers(){
         ArrayList<User> array = new ArrayList<User>();
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db")) {
+        String vitorDatabasePath = "jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db";
+        String teixaDatabasePath = "jdbc:sqlite:E:/Meus Documentos/Documentos/Códigos/APS/APS/Entrega1/src/main/resources/banco.db";
+        String hugoDatabasePath = "jdbc:sqlite:/home/hsrf/Desktop/PersonalProjects/APS/Entrega1/src/main/resources/banco.db";
+        try (Connection connection = DriverManager.getConnection(hugoDatabasePath)) {
             Statement statement = connection.createStatement();
-            
+            statement.execute("INSERT INTO USER( EMAIL, PASSWORD ) VALUES ('teste@cin', 'teste')");
             statement.execute("CREATE TABLE IF NOT EXISTS USER( USERID INT PRIMARY KEY, EMAIL VARCHAR NOT NULL UNIQUE, PASSWORD VARCHAR NOT NULL UNIQUE, NICKNAME VARCHAR, ISVIP INTEGER, DURATIONVIP VARCHAR )");
             System.out.println("Conexão banco de users realizada!");
-            // statement.execute("INSERT INTO USER( EMAIL, PASSWORD, NICKNAME, ISVIP, DURATIONVIP ) VALUES ('vss2@cin.ufpe.br', '123456', 'Vitor', 0, '0/0/0'), ('carlos@cin.ufpe.br', '987654', 'Carlos', 1, '31/12/2021')");
             
             PreparedStatement stmt = connection.prepareStatement("select * from USER");
             ResultSet resultSet = stmt.executeQuery();
@@ -71,7 +76,6 @@ public class RepositorioUser implements IRepositorioUser {
                 System.out.printf(email, password, nickname, isVIP, durationVIP, "\n");
 
                 array.add(new User(email, password, nickname, isVIP, durationVIP));
-                // System.out.println("User identificado: " + nome);
             }
 
         } catch (SQLException e) {
