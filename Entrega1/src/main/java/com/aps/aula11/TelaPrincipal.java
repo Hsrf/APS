@@ -12,21 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aps.aula11.RepositorioUser;
 import com.aps.aula11.Date;
 
-@Controller
-public class TelaHomepage {
-
-    @GetMapping("/homepage")
+public class TelaPrincipal {
+    
+    @GetMapping("/telaprincipal")
     public String loadPage(Model model) {
-        model.addAttribute("User", new User("teste@teste.com", "123", "testinho", 0, new Date(31,12,2021)));
-        return "homepage";
+        return "telaprincipal";
     }
-
-    @RequestMapping("/homepage")
-    public String doLogin(@RequestParam("email") String email, @RequestParam("password") String password){
-        RepositorioUser RU = new RepositorioUser();
-        boolean retorno = RU.getUser(email, password);
-        System.out.printf("Tentei fazer login: "+ email + " " + password + " " + retorno + "\n\n\n\n");
-        String answer = (retorno ? "telaprincipal" : "homepage" );
-        return answer;
-    }
+    
 }
