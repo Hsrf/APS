@@ -30,28 +30,30 @@ import java.sql.*;
 //     }
 // }
 
-public final class Singleton_SQL {
-    private static Singleton_SQL INSTANCE;
-    public Connection connected_instance;
-    private String dbName = "banco.db";
+public final class SingletonSQL {
+    private static SingletonSQL INSTANCE;
+    public static Connection connected_instance;
+    private static String vitorDatabasePath = "/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db";
+    private static String teixaDatabasePath = "/Meus Documentos/Documentos/Códigos/APS/APS/Entrega1/src/main/resources/banco.db";
+    private static String hugoDatabasePath = "/home/hsrf/Desktop/PersonalProjects/APS/Entrega1/src/main/resources/banco.db";
+    private static String dbName = vitorDatabasePath;
 
-    public Singleton_SQL(String dbName){
+    private SingletonSQL(String dbName){
         try {
             this.connected_instance = DriverManager.getConnection("jdbc:sqlite:" + dbName);
         } catch (Exception e) {
             System.out.println("Erro no construtor: "+e);
         }
-        this.dbName = dbName;
     }
 
-    public Connection connectOrInstance(){
-        if(connected_instance != null){
+    public static SingletonSQL connectOrInstance(){
+        if(connected_instance == null){
             try {
-                this.connected_instance = DriverManager.getConnection("jdbc:sqlite:" + dbName);
+                connected_instance = DriverManager.getConnection("jdbc:sqlite:" + dbName);
             } catch (Exception e){
                 System.out.println(e.getMessage());
             }
-            return this.connected_instance;
+            return INSTANCE;
         }
         System.out.println("O Singleton está funcionando!");
         try{
@@ -59,7 +61,7 @@ public final class Singleton_SQL {
         } catch(Exception e) {
             System.err.println(e.getMessage());
         } finally {
-            return connected_instance;
+            return INSTANCE;
         }
     }
 }

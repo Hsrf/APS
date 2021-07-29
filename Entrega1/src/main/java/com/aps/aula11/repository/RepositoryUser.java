@@ -2,7 +2,7 @@ package com.aps.aula11;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.sql.*;
-import com.aps.aula11.Singleton_SQL;
+import com.aps.aula11.SingletonSQL;
 import com.aps.aula11.IRepositoryUser;
 import com.aps.aula11.User;
 
@@ -22,12 +22,8 @@ public class RepositoryUser implements IRepositoryUser {
         String hugoDatabasePath = "/home/hsrf/Desktop/PersonalProjects/APS/Entrega1/src/main/resources/banco.db";
 
         try {
-            Singleton_SQL sql = new Singleton_SQL(vitorDatabasePath);
-            // Connection connection = DriverManager.getConnection(vitorDatabasePath);
-            // Statement statement = sql.connected_instance.createStatement();
-            Connection connection = sql.connectOrInstance();
-            // statement.execute("INSERT INTO USER( EMAIL, PASSWORD ) VALUES ('teste@cin', 'teste')");
-            PreparedStatement stmt = connection.prepareStatement(
+            SingletonSQL sql = SingletonSQL.connectOrInstance();
+            PreparedStatement stmt = sql.connected_instance.prepareStatement(
                 "SELECT EMAIL " +
                 "FROM USER " +
                 "WHERE EMAIL = '" + email + "'" +
