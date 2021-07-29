@@ -17,12 +17,15 @@ public class RepositoryUser implements IRepositoryUser {
 
     public boolean getUser(String email, String password){
         boolean answer = false;
-        String vitorDatabasePath = "jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db";
-        String teixaDatabasePath = "jdbc:sqlite:E:/Meus Documentos/Documentos/Códigos/APS/APS/Entrega1/src/main/resources/banco.db";
-        String hugoDatabasePath = "jdbc:sqlite:/home/hsrf/Desktop/PersonalProjects/APS/Entrega1/src/main/resources/banco.db";
+        String vitorDatabasePath = "/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db";
+        String teixaDatabasePath = "/Meus Documentos/Documentos/Códigos/APS/APS/Entrega1/src/main/resources/banco.db";
+        String hugoDatabasePath = "/home/hsrf/Desktop/PersonalProjects/APS/Entrega1/src/main/resources/banco.db";
 
-        try(Connection connection = DriverManager.getConnection(hugoDatabasePath)){
-            Statement statement = connection.createStatement();
+        try {
+            Singleton_SQL sql = new Singleton_SQL(vitorDatabasePath);
+            // Connection connection = DriverManager.getConnection(vitorDatabasePath);
+            // Statement statement = sql.connected_instance.createStatement();
+            Connection connection = sql.connectOrInstance();
             // statement.execute("INSERT INTO USER( EMAIL, PASSWORD ) VALUES ('teste@cin', 'teste')");
             PreparedStatement stmt = connection.prepareStatement(
                 "SELECT EMAIL " +
@@ -55,7 +58,7 @@ public class RepositoryUser implements IRepositoryUser {
         String vitorDatabasePath = "jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db";
         String teixaDatabasePath = "jdbc:sqlite:E:/Meus Documentos/Documentos/Códigos/APS/APS/Entrega1/src/main/resources/banco.db";
         String hugoDatabasePath = "jdbc:sqlite:/home/hsrf/Desktop/PersonalProjects/APS/Entrega1/src/main/resources/banco.db";
-        try (Connection connection = DriverManager.getConnection(hugoDatabasePath)) {
+        try (Connection connection = DriverManager.getConnection(vitorDatabasePath)) {
             Statement statement = connection.createStatement();
             statement.execute("INSERT INTO USER( EMAIL, PASSWORD ) VALUES ('teste@cin', 'teste')");
             statement.execute("CREATE TABLE IF NOT EXISTS USER( USERID INT PRIMARY KEY, EMAIL VARCHAR NOT NULL UNIQUE, PASSWORD VARCHAR NOT NULL UNIQUE, NICKNAME VARCHAR, ISVIP INTEGER, DURATIONVIP VARCHAR )");

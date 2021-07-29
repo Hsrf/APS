@@ -10,7 +10,8 @@ public class RepositoryPlaylist implements IRepositoryPlaylist {
     @Override
 	public Deque<Integer> getMusicsFromPlaylist(int playlistId){
         Deque<Integer> deque= new ArrayDeque<Integer>();
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/vitor/Documentos/APS/Projeto/APS/Entrega1/src/main/resources/banco.db")) {
+        try {
+            Connection connection = DriverManager.getConnection("");
             Statement statement = connection.createStatement();
             
             statement.execute("CREATE TABLE IF NOT EXISTS PLAYLIST( PLAYLISTID INT PRIMARY KEY, NAME VARCHAR NOT NULL, OWNERID NOT NULL, ISPRIVATE INT NOT NULL )");
