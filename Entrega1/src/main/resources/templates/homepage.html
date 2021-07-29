@@ -1,50 +1,136 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Clientes</title>
-    </head>
-    <style>
-        body {
-            background-color: black;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 25px;
-            font-family: 'SF Display', 'Inter', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-        input {
-            background-color: black;
-            color: #DB1E2E;
-            border: none;
-            border-bottom-color: #DB1E2E;
-            border-bottom-style: none;
-            border-bottom-width: medium;
-            border-bottom: solid #DB1E2E;
-            border-bottom-width: 4px;
-            font-size: 25px;
-        }
-        button {
-            font-size: 25px;
-            color: white;
-            background-color: #DB1E2E;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
-    <body>
-        <div>
-            <form th:action="@{/homepage}" th:object="${User}" method="post">
-                <input placeholder="Email" type="email" name="email">
-                <input placeholder="Senha" type="password" name="password">
-                <input type="submit" value="Login">
-            </form>
-            <br>
-            <br>
-            <br>
-            <button> Criar conta</button>
-        </div>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>SoundHub</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      font-family: "SF Display", "Inter", "Trebuchet MS", "Lucida Sans Unicode",
+        "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    }
+    form {
+      display: flex;
+    }
+    input {
+      color: black;
+      border: none;
+      border-bottom: solid 4px #1a1f71;
+      font-size: 20px;
+      margin: 0px 10px;
+    }
+    input:focus-visible {
+      outline: none;
+    }
+    button {
+      min-width: 180px;
+      width: 100%;
+      height: 53px;
+      font-weight: bold;
+      font-size: 20px;
+      transition: all linear 0.2s;
+      background: transparent;
+      margin: 0px 5px;
+    }
+
+    .buttonBlueBorder {
+      border: 2px solid #1a1f71;
+      color: #1a1f71;
+    }
+    .buttonBlueBorder:hover {
+      background: #1a1f71;
+      color: #ffffff;
+    }
+    .buttonBlueWithoutBorder {
+      color: #1a1f71;
+      border: 2px solid transparent;
+    }
+    .buttonBlueWithoutBorder:hover {
+      text-decoration: underline;
+    }
+
+    .background {
+      width: 100%;
+      background-color: #eaeef0;
+      margin: 0px !important;
+    }
+    .sectionTitle {
+      color: #1a1f71;
+      font-size: 48px;
+      font-weight: bold;
+      margin: 15px;
+      padding-right: 480px;
+      padding-left: 60px;
+    }
+
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #cad1d6;
+      background-color: #ffffff;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      margin: 55px;
+      background-color: #ffffff;
+      padding: 30px;
+      width: 85%;
+    }
+    .centerText {
+      margin: auto;
+    }
+    img {
+      margin: auto;
+      width: 800px;
+      height: auto;
+    }
+    p {
+      font-size: 18px;
+      padding: 15px;
+    }
+    span {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+  </style>
+  <body class="background">
+    <div class="header">
+      <h1 class="sectionTitle">Soundhub</h1>
+      <form th:action="@{/homepage}" th:object="${User}" method="post">
+        <input placeholder="Email" type="email" name="email" />
+        <input placeholder="Senha" type="password" name="password" />
+        <button class="buttonBlueBorder" type="submit" value="Login">
+          Login
+        </button>
+        <button class="buttonBlueWithoutBorder">Criar conta</button>
+      </form>
+    </div>
+
+    <div class="content">
+      <h1 class="centerText">Seja bem vindo ao SoundHub!!</h1>
+
+      <p class="centerText">
+        Nós somos uma plataforma de streaming de música e podcasts, baseada em
+        Spring e Javascript, desenvolvida na cadeira de Análise de Projetos e
+        Sistemas.
+      </p>
+
+      <img src="../images/participants.jpeg" />
+      <a class="centerText" href="https://github.com/Hsrf/APS" target="_blank"
+        >Repositorio</a
+      >
+
+      <span
+        >Desenvolvido por: <br />Hugo Falcão, Gabriel Teixeira e Vitor
+        Sousa</span
+      >
+    </div>
+  </body>
 </html>
