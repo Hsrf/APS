@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.aps.aula11.RepositoryUser;
 import com.aps.aula11.Date;
+import com.aps.aula11.PlaylistController;
 
 @Controller
 public class Routes {
@@ -24,7 +25,8 @@ public class Routes {
     public String doLogin(@RequestParam("email") String email, @RequestParam("password") String password){
         RepositoryUser RU = new RepositoryUser();
         boolean retorno = RU.getUser(email, password);
-        String answer = (retorno ? "redirect:dashboard" : "homepage" );
+        String answer = (retorno ? "redirect:dashboard" : "homepage");
+
         return answer;
     }
 
@@ -32,5 +34,11 @@ public class Routes {
     public String loadPageDashboard() {
         return "dashboard";
     }
-    
+
+    @GetMapping("/display_all")
+    public String mostrarTudo(){
+        //"Ludwig van Beethoven - Symphony Number 9"
+        PlaylistController.displayAll();
+        return "/playlist";
+    }
 }
