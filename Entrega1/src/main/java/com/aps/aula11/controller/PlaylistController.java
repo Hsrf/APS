@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.aps.aula11.Music;
 import java.sql.ResultSet;
+import java.io.FileOutputStream;
 
 public class PlaylistController {
 
     // @RequestMapping(value = {"/display_all"}, method = RequestMethod.GET)
     public static ModelAndView displayAll() {
         ModelAndView model = new ModelAndView();
-        ResultSet collection = RepositoryMusic.findAll("Ludwig van Beethoven - Symphony Number 9");
+        FileOutputStream collection = RepositoryMusic.findAll("Ludwig van Beethoven - Symphony Number 9");
         // RepositoryMusic.findAll("Ludwig van Beethoven - Symphony Number 9");
         try {
-            model.addObject("allAudioFiles", collection.getBytes("FILE"));
+            model.addObject("allAudioFiles", collection);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

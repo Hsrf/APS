@@ -31,10 +31,10 @@
         </div>
         <!-- <div th:each="music : ${allAudioFiles}"> -->
             <!-- <div class="col-sm-4 col-md-4 col-xs-12" style="text-align:center; float:left;" th:if="${audio.active}"> -->
-                <h5 th:text="${allAudioFiles}"></h5>
-                <!-- <audio controls> -->
-                    <!-- <source th:src="${allAudioFiles}" type="audio/mpeg"> -->
-                <!-- </audio> -->
+                <!-- <h5 th:text="${allAudioFiles}"></h5> -->
+                <audio controls>
+                        <source th:src="${allAudioFiles}" type="audio/mpeg">
+                </audio>
                 <!-- <h6>Author: <a th:href="'user_profile/' + ${audio.uploader}" th:text="${audio.uploader}"></a></h6> -->
                 <!-- <h6 th:text="${'Size: ' + audio.size + ' MB'}"></h6> -->
                 <!-- <h6 th:text="${'Uploaded: ' + audio.date}"></h6> -->

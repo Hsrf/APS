@@ -34,7 +34,7 @@ public class RepositoryMusic {
         return bos != null ? bos.toByteArray() : null;
     }
 
-    public static ResultSet findAll(String busca){
+    public static FileOutputStream findAll(String busca){
         SingletonSQL sql = SingletonSQL.connectOrInstance();
         // try {
         //     Statement statement = sql.connected_instance.createStatement();
@@ -58,7 +58,20 @@ public class RepositoryMusic {
                 );
                 resultSet = stmt.executeQuery();
                 System.out.println("Achei a música no banco");
-                return resultSet;
+                int iteracao = 0;
+                FileOutputStream fos = null;
+                while (resultSet.next()) { 
+                    File fileMusic = new File("music" + iteracao + "_.mp3"); 
+                    fos = new FileOutputStream(fileMusic); 
+          
+                    byte[] buffer = new byte[1];         
+                    InputStream is = resultSet.getBinaryStream(2); 
+                    while (is.read(buffer) > 0) { 
+                      fos.write(buffer); 
+                    } 
+                    fos.close(); 
+                }
+                return fos;
                 // Codar adapter para que ele retorne várias, uma ou nenhuma música.
                 // Aparentemente o esse return ai está matando a query, então tem que retornar esse adapter já prontinho.
         } catch (Exception e){
