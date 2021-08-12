@@ -9,12 +9,12 @@ public class MusicDTO {
 
     private Long id;
     private String name;
-    private String artistName;
+    private Long artistId;
     private byte[] data;
 
-    public MusicDTO(Music music, String artistName) {
+    public MusicDTO(Music music, Long artistId) {
         this.id = music.getId();
         this.name = music.getName();
-        this.artistName = artistName;
+        this.artistId = artistId;
     }
 }

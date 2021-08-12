@@ -21,15 +21,17 @@ public class MusicService {
 
     public MusicDTO getMusicById(Long id){
         Music music = repository.getById(id);
-        String artistName = proxy.getArtistName(music.getArtistId()).getBody();
-        return new MusicDTO(music, artistName);
+        // String artistName = proxy.getArtistName(music.getArtistId()).getBody();
+        return new MusicDTO(music, 1L);
     }
 
-    public void saveMusic(Long artistId, MultipartFile file){
+    public void saveMusic(Long artistId, MultipartFile file, String  artistName){
+        System.out.println(artistName);
+        proxy.saveArtist(artistName);
         Music newMusic = new Music();
         newMusic.setName(file.getOriginalFilename());
         newMusic.setArtistId(artistId);
-        // newMusic.setName("1");
+        // newMusic.setId(1L);
         // newMusic.setArtistId(1L);
         try {
             newMusic.setData(file.getBytes());
@@ -37,7 +39,9 @@ public class MusicService {
             e.printStackTrace();
         }
         repository.save(newMusic);
-        // System.out.printf("%s %d", newMusic.getName(), newMusic.getArtistId());
+        System.out.println("Qntd musicas no bando: "+ repository.count());
+        
+        System.out.printf("%s %d %d", newMusic.getName(), newMusic.getArtistId(), newMusic.getId());
     }
 
     public List<Music> getFiles(){

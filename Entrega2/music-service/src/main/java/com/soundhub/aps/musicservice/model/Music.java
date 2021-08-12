@@ -29,4 +29,36 @@ public class Music implements Serializable{
 
     @Lob
     private byte[] data;
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getArtistId() {
+        return ArtistId;
+    }
+
+    public void setArtistId(Long artistId) {
+        this.ArtistId = artistId;
+    }
+
+    public byte[] getData() {
+        return this.data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 }
