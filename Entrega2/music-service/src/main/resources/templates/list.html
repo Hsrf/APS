@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Admin add new music to system</title>
+</head>
+<body>
+   <div>
+     <h3>Upload Multiple Files</h3>
+     <form id="uploadFiles" name="uploadFiles" method="post" th:action=@{/music/upload} encType="multipart/form-data">
+       <input type="file" name="files" multiple required />
+       <input type="text" name="artistName"/>
+       <button type="submit">Submit</button>
+     </form>
+   </div>
+   
+   <div>
+     <h3>List of Musics in the System</h3>
+     <table>
+       <thead>
+         <tr>
+           <th>Id</th>
+           <th>Name</th>
+           <th>Player</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr th:each="doc:${docs}">
+            <td th:text="${doc.id}"></td>
+            <td th:text="${doc.name}"></td>
+            <!-- <td th:text="${doc.docName}"/> -->
+            <!-- <td><a th:href="@{'/downloadFile/'+${doc.id}}">Download</a></td> -->
+            <td>
+              <audio controls>
+                <source th:src="@{'/music/'+${doc.id}}" type="audio/mpeg">
+              </audio>
+            </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+
+</body>
+</html>
