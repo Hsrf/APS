@@ -20,10 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 @RequestMapping("/music")
 // @Controller
-public class MusicController {
+public class PlaylistController {
     
     @Autowired
-    private MusicService service; 
+    private PlaylistService service; 
 
     @PostMapping("/upload")
 	public String uploadFiles(@RequestParam("files") MultipartFile[] files, @RequestParam("artistName") String artistName) {
@@ -115,7 +115,7 @@ public class MusicController {
 
     @GetMapping("/home")
 	public ModelAndView get() {
-        List<Music> docs = service.getFiles();
+        List<Playlist> docs = service.getFiles();
         ModelAndView mav = new ModelAndView();
         mav.addObject("docs", docs);
         mav.setViewName("music");
@@ -128,7 +128,7 @@ public class MusicController {
     // }
     
     @GetMapping("/{musicId}")
-    public ResponseEntity<MusicDTO> getMusic(@PathVariable String musicId){
+    public ResponseEntity<PlaylistDTO> getMusic(@PathVariable String musicId){
         Long id = Long.valueOf(musicId).longValue();
         return ResponseEntity.ok().body(service.getMusicById(id));
     }

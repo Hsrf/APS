@@ -1,0 +1,40 @@
+server:
+  port: 8500
+spring:
+  application:
+    name: playlist-service
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db
+    username: root
+    password:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 200MB
+  h2:
+    console:
+      enabled: true
+  jackson:
+    default-property-inclusion: NON_NULL
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  # flyway:
+  #     url: jdbc:mysql://localhost:3306
+  #     schemas: aps-music-service
+  #     user: root
+  #     password:
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8671/eureka

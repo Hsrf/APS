@@ -38,6 +38,16 @@
       "console": "internalConsole",
       "mainClass": "com.soundhub.aps.namingserver.NamingServerApplication",
       "args": ""
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-PlaylistServiceApplication<playlist-service>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.soundhub.aps.playlistservice.PlaylistServiceApplication",
+      "projectName": "playlist-service",
+      "args": ""
     }
   ]
 }
