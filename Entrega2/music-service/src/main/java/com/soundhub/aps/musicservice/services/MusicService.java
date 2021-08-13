@@ -22,7 +22,7 @@ public class MusicService {
     public MusicDTO getMusicById(Long id){
         Music music = repository.getById(id);
         // String artistName = proxy.getArtistName(music.getArtistId()).getBody();
-        return new MusicDTO(music, 1L);
+        return new MusicDTO(music, 1L, music.getData());
     }
 
     public void saveMusic(Long artistId, MultipartFile file, String  artistName){

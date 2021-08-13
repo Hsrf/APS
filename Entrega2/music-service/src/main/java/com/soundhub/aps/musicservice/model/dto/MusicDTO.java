@@ -12,9 +12,10 @@ public class MusicDTO {
     private Long artistId;
     private byte[] data;
 
-    public MusicDTO(Music music, Long artistId) {
+    public MusicDTO(Music music, Long artistId, byte[] data) {
         this.id = music.getId();
         this.name = music.getName();
         this.artistId = artistId;
+        this.data = music.getData();
     }
 }
