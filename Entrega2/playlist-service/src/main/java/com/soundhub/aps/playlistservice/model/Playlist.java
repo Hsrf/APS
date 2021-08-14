@@ -1,5 +1,6 @@
 package com.soundhub.aps.playlistservice.model;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Playlist implements Serializable{
     @Column(name = "owner_id", nullable = false)
     private Long ownerId;
 
-    @Lob
+    @Transient
     private List<Long> musicIds;
 
     public Long getId() {
@@ -59,6 +60,11 @@ public class Playlist implements Serializable{
     }
     public void insertMusic(Long music){
         this.musicIds.add(music);
+    }
+    public void insertMusics(List<Long> musics){
+        for(int i = 0;i<musics.size();i++){
+            this.musicIds.add(musics.get(i));
+        }
     }
     public void deleteMusic(Long music){
         this.musicIds.remove(this.musicIds.indexOf(music));
