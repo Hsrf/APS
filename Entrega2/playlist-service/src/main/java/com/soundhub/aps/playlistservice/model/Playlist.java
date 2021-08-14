@@ -29,8 +29,19 @@ public class Playlist implements Serializable{
     @Column(name = "owner_id", nullable = false)
     private Long ownerId;
 
+    @Column
+    private boolean isPrivate;
+    
     @Transient
     private List<Long> musicIds;
+
+    public boolean getPrivacy(){
+        return this.isPrivate;
+    } 
+
+    public void setPrivacy(boolean privacy){
+        this.isPrivate = privacy;
+    }
 
     public Long getId() {
         return this.id;
@@ -52,7 +63,7 @@ public class Playlist implements Serializable{
         return ownerId;
     }
 
-    public void setArtistId(Long ownerId) {
+    public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
     }
     public List<Long> getMusics(){

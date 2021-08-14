@@ -22,23 +22,25 @@ public class PlaylistService {
 
     public PlaylistDTO getPlaylistById(Long id){
         Playlist playlist = repository.getById(id);
-        Long ownerId = 1L;
-        boolean isPrivate = false;
-        return new PlaylistDTO(playlist, ownerId, isPrivate);
+        return new PlaylistDTO(playlist);
     }
 
     public void insertMusic(Long playlistId,List<Long> musicId){
         Playlist playlist = repository.getById(playlistId);
         playlist.insertMusics(musicId);
         repository.save(playlist);
-        // repository.update(playlist);
+    }
+    public void updatePlaylist(Long playlistId, String newName, boolean isPrivate){
+        Playlist playlist = repository.getById(playlistId);
+        playlist.setName(newName);
+        playlist.setPrivacy(isPrivate);
+        repository.save(playlist);
+    }
+    public List<Playlist> getListPlaylist(Long id){
+        return repository.findByOwnerId(id);
     }
 
-    public List<Playlist> getFiles(){
-        return repository.findAll();
-    }
-
-    public Optional<Playlist> getFile(Long id){
+    public Optional<Playlist> getPlaylist(Long id){
         return repository.findById(id);
     }
 }

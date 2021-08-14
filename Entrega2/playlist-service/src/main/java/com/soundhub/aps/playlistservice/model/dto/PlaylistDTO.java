@@ -15,10 +15,11 @@ public class PlaylistDTO {
     private boolean isPrivate;
     private List<Long>musicIds;
 
-    public PlaylistDTO(Playlist playlist, Long ownerId,boolean isPrivate) {
+    public PlaylistDTO(Playlist playlist) {
         this.id = playlist.getId();
         this.name = playlist.getName();
-        this.ownerId = ownerId;
-        this.isPrivate = isPrivate;
+        this.isPrivate = playlist.getPrivacy();
+        this.musicIds = playlist.getMusics();
+        this.ownerId = playlist.getOwnerId();
     }
 }

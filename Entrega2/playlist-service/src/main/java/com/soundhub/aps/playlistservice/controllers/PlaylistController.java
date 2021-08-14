@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import jdk.jfr.internal.Repository;
+
 @RestController
 @RequestMapping("/playlist")
 // @Controller
@@ -36,5 +38,19 @@ public class PlaylistController {
 			service.saveMusic(1L, file, artistName);
 		}
 	}
+    @GetMapping("/{id}/musics")
+    public List<Long> getPlaylistData(
+        @PathVariable String id
+    ){
+        Long playlistId = Long.valueOf(id).longValue();
+        Playlist play = service.findById(id);
+        if(play != null){
+            List<Long> musics = play.getMusics();
+            if(musics.size() != 0){
+                return musics;
+            }
+        }
+        return HttpResponse.noContent();
+    }
 }
 
