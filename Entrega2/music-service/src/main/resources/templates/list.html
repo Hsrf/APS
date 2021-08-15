@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin add new music to system</title>
+<script type="text/javascript" src="@{/js/teste.js}"></script>
 </head>
 <body>
    <div>
@@ -28,7 +29,7 @@
           <!-- <td th:text="${doc.docName}"/> -->
           <!-- <td><a th:href="@{'/downloadFile/'+${doc.id}}">Download</a></td> -->
           <td>
-            <audio controls>
+            <audio controls id="playerTag">
               <source th:src="@{'/music/'+${doc.id}}" type="audio/mpeg">
             </audio>
           </td>
