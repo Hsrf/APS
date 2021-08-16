@@ -29,9 +29,6 @@ public class User implements Serializable{
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "user_id", nullable = false)
-    private Long UserId;
-
     public Long getId() {
         return this.id;
     }

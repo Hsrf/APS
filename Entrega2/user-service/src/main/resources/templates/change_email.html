@@ -2,16 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Clientes</title>
+    <title>SoundHub</title>
   </head>
-  <script type="text/javascript" src="js/player.js"></script>
   <style>
     body {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 20px;
+      font-size: 25px;
       font-family: "SF Display", "Inter", "Trebuchet MS", "Lucida Sans Unicode",
         "Lucida Grande", "Lucida Sans", Arial, sans-serif;
     }
@@ -28,9 +27,6 @@
     input:focus-visible {
       outline: none;
     }
-    a {
-        text-decoration: none !important; 
-    }
     button {
       min-width: 180px;
       width: 100%;
@@ -40,6 +36,7 @@
       transition: all linear 0.2s;
       background: transparent;
       margin: 0px 5px;
+      cursor: pointer;
     }
 
     .buttonBlueBorder {
@@ -52,12 +49,14 @@
     }
     .buttonBlueWithoutBorder {
       color: #1a1f71;
-      border: 25px solid transparent;
+      border: 2px solid transparent;
     }
     .buttonBlueWithoutBorder:hover {
       text-decoration: underline;
     }
-
+    a {
+        text-decoration: none !important; 
+    }
     .background {
       width: 100%;
       background-color: #eaeef0;
@@ -86,7 +85,6 @@
       background-color: #ffffff;
       padding: 30px;
       width: 85%;
-      min-height: 450px;
     }
     .centerText {
       margin: auto;
@@ -97,60 +95,26 @@
       height: auto;
     }
     p {
-      font-size: 25px;
+      font-size: 18px;
       padding: 15px;
-      color: #1a1f71;
-      font-weight: bold;
     }
     span {
       margin-top: 30px;
       font-size: 18px;
     }
-    .musicControls {
-      border-radius: 50px;
-      min-width: 0px;
-      width: 50px;
-      border: none;
-    }
-    .musicControls:hover {
-      background-color: #cad1d6;
-    }
-    .footer {
-      background-color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      border-bottom: 1px solid #cad1d6;
-    }
-    .controlPanel {
-      display: flex;
-      justify-content: center;
-    }
   </style>
-  <body>
-    <div class="background">
-      <div class="header">
-        <h1 class="sectionTitle">Soundhub</h1>
-        <a type="button" href="/music" class="buttonBlueWithoutBorder">Minhas Playlists</a>
-        <a type="button" href="/music" class="buttonBlueWithoutBorder">Albuns</a>
-        <a type="button" href="http://localhost:8200/artist/" class="buttonBlueWithoutBorder">Artistas</a>
-        <a type="button" href="http://localhost:8090/user/change_email" class="buttonBlueWithoutBorder">Configurações</a>
-        <a type="button" href="http://localhost:8090/user/homepage" class="buttonBlueWithoutBorder">Sair</a>
-      </div>
-
-      <div class="content">
-        <iframe src="/music/list" style="width: 100%; border: none; min-height: 450px;"></iframe>
-      </div>
-
-      <div class="footer">
-        <p class="centerText">Player</p>
-        <div class="controlPanel">
-          <button class="musicControls">⏮️</button>
-          <audio id="player" controls autoplay>
-            <source src="" id="player_source" type="audio/mpeg">
-          </audio>
-          <button class="musicControls">⏭️</button>
-        </div>
-      </div>
+  <body class="background">
+    <div class="header">
+      <a href="/user/homepage"><h1 class="sectionTitle">Soundhub</h1></a>
+      <form th:action="@{/change_email}" method="post">
+        <input placeholder="Email" type="email" name="email" />
+        <button class="buttonBlueBorder" type="submit" value="Login">
+          Change my email
+        </button>
+      </form>
     </div>
+    <span
+      >Fill your new email address.</span
+    >
   </body>
 </html>

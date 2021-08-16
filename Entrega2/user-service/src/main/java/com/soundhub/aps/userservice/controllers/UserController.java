@@ -29,21 +29,31 @@ import org.springframework.http.MediaType;
 
 
 // @RestController
-@RequestMapping("/music")
+@RequestMapping("/user")
 @Controller
 public class UserController {
     
     @Autowired
     private UserService service; 
 
-    @GetMapping("/js/teste.js")
-	public String getTeste() {
-		return "/js/teste.js";
+    @GetMapping("/homepage")
+	public String getHomepage() {
+		return "homepage";
 	}
 
-    @GetMapping("/homepage")
-	public String getDashboard() {
-		return "homepage";
+    @GetMapping("/new")
+	public String createAccount() {
+		return "new";
+	}
+
+    @GetMapping("/change_email")
+	public String changeEmail() {
+		return "change_email";
+	}
+
+	@GetMapping("/recover")
+	public String recoverAccount() {
+		return "recover";
 	}
 
     // @PostMapping("/upload")

@@ -32,10 +32,11 @@
       width: 100%;
       height: 53px;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 15px;
       transition: all linear 0.2s;
       background: transparent;
       margin: 0px 5px;
+      cursor: pointer;
     }
 
     .buttonBlueBorder {
@@ -47,13 +48,16 @@
       color: #ffffff;
     }
     .buttonBlueWithoutBorder {
+      font-size: 15px;
       color: #1a1f71;
-      border: 2px solid transparent;
+      border: 10px solid transparent;
     }
     .buttonBlueWithoutBorder:hover {
       text-decoration: underline;
     }
-
+    a {
+      text-decoration: none !important; 
+    }
     .background {
       width: 100%;
       background-color: #eaeef0;
@@ -67,7 +71,6 @@
       padding-right: 480px;
       padding-left: 60px;
     }
-
     .header {
       width: 100%;
       display: flex;
@@ -102,15 +105,16 @@
   </style>
   <body class="background">
     <div class="header">
-      <h1 class="sectionTitle">Soundhub</h1>
-      <form th:action="@{/homepage}" th:object="${User}" method="post">
+      <a href="/user/homepage"><h1 class="sectionTitle">Soundhub</h1></a>
+      <form th:action="@{user/login}" method="post">
         <input placeholder="Email" type="email" name="email" />
         <input placeholder="Senha" type="password" name="password" />
         <button class="buttonBlueBorder" type="submit" value="Login">
           Login
         </button>
-        <button class="buttonBlueWithoutBorder">Criar conta</button>
       </form>
+    <a type="button" href="/user/new" class="buttonBlueWithoutBorder">Criar conta</button></a>
+    <a type="button" href="/user/recover" class="buttonBlueWithoutBorder">Recuperar conta</button></a>
     </div>
 
     <div class="content">
@@ -123,8 +127,8 @@
       </p>
 
       <img src="../images/participants.jpeg" />
-      <a class="centerText" href="https://github.com/Hsrf/APS" target="_blank"
-        >Repositorio</a
+      <a class="centerText" href="http://localhost:8100/music/dashboard" target="_blank"
+        >Repositorio GitHub</a
       >
 
       <span

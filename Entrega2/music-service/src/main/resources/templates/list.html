@@ -3,8 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin add new music to system</title>
-<script type="text/javascript" src="js/teste.js"></script>
 </head>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-family: "SF Display", "Inter", "Trebuchet MS", "Lucida Sans Unicode",
+      "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  }
+  h3 {
+    font-size: 25px;
+    padding: 15px;
+  }
+  th {
+    font-size: 18px;
+    padding: 15px;
+  }
+  span {
+    margin-top: 30px;
+    font-size: 18px;
+  }
+</style>
 <body>
    <div>
      <h3>Upload Multiple Files</h3>
@@ -19,22 +41,26 @@
      <h3>List of Musics in the System</h3>
      <table>
         <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Player</th>
+          <th>Music Id</th>
+          <th>Music Name</th>
+          <!-- <th>Player</th> -->
         </tr>
         <tr th:each="doc:${docs}">
           <td th:text="${doc.id}"></td>
           <td th:text="${doc.name}"></td>
+          <button th:onclick="'parent.fetchMusic('+${doc.id}+');'">▶️</button>
           <!-- <td th:text="${doc.docName}"/> -->
           <!-- <td><a th:href="@{'/downloadFile/'+${doc.id}}">Download</a></td> -->
-          <td>
+          <!-- <td>
             <audio controls id="playerTag">
               <source th:src="@{'/music/'+${doc.id}}" type="audio/mpeg">
             </audio>
-          </td>
+          </td> -->
         </tr>
      </table>
+     <!-- <audio id="player" controls autoplay>
+      <source src="" id="player_source" type="audio/mpeg">
+    </audio> -->
    </div>
 
 </body>
