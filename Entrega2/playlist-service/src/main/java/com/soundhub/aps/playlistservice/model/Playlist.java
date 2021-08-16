@@ -50,7 +50,9 @@ public class Playlist implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-
+    public void setOwner(Long id){
+        this.ownerId = id;
+    }
     public String getName() {
         return this.name;
     }
