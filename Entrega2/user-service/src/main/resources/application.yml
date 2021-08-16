@@ -1,0 +1,31 @@
+
+server:
+  port: 8090
+spring:
+  application:
+    name: music-service
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/test;DB_CLOSE_ON_EXIT=FALSE
+    username: root
+    password:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 200MB
+  h2:
+    console:
+      enabled: true
+  jackson:
+    default-property-inclusion: NON_NULL
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
