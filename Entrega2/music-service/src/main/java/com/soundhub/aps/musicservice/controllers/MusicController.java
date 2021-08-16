@@ -36,6 +36,16 @@ public class MusicController {
     @Autowired
     private MusicService service; 
 
+    @GetMapping("/js/teste.js")
+	public String getTeste() {
+		return "/js/teste.js";
+	}
+
+    @GetMapping("/dashboard")
+	public String getDashboard() {
+		return "dashboard";
+	}
+
     @PostMapping("/upload")
 	public String uploadFiles(@RequestParam("files") MultipartFile[] files, @RequestParam("artistName") String artistName, Model model) {
 		for (MultipartFile file: files) {
