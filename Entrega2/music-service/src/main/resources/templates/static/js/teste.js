@@ -1,0 +1,3 @@
+function testeJS(){
+    alert("Fon");
+}

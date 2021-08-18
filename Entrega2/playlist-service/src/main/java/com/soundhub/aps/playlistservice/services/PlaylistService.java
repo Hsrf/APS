@@ -30,14 +30,23 @@ public class PlaylistService {
         playlist.insertMusics(musicId);
         repository.save(playlist);
     }
-    public void updatePlaylist(Long playlistId, String newName, boolean isPrivate){
+    public void createPlaylist(String newName, boolean isPrivate, Long ownerId){
+        Playlist play = new Playlist();
+        play.setName(newName);
+        play.setPrivacy(isPrivate);
+        play.setOwner(ownerId);
+        repository.save(play);
+    }
+    public void updatePlaylist(Long playlistId, String newName, boolean isPrivate, Long ownerId){
         Playlist playlist = repository.getById(playlistId);
-        playlist.setName(newName);
-        playlist.setPrivacy(isPrivate);
-        repository.save(playlist);
+        if(ownerId == playlist.getId()){
+            playlist.setName(newName);
+            playlist.setPrivacy(isPrivate);
+            repository.save(playlist);
+        }
     }
     public List<Playlist> getListPlaylist(Long id){
-        return repository.findByOwnerId(id);
+        return repository.findByownerId(id);
     }
 
     public Optional<Playlist> getPlaylist(Long id){
