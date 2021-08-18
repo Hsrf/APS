@@ -6,8 +6,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/aps-playlist-service
-    username: wildclown
-    password: G@briel123
+    username: root
+    password: root
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,13 +15,12 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-  flyway:
-    url: jdbc:mysql://localhost:3306/aps-artist-service
-    schemas: aps-artist-service
-    user: wildclown
-    password: G@briel123
+#   flyway:
+#     url: jdbc:mysql://localhost:3306/aps-playlist-service
+#     schemas: aps-user-service
+#     user: root
+#     password: root
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8671/eureka
-

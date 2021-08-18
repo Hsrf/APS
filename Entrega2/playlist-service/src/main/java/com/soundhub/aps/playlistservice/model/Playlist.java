@@ -1,15 +1,15 @@
 package com.soundhub.aps.playlistservice.model;
 
-import java.beans.Transient;
-import java.io.Serializable;
 import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.Transient;
+import javax.persistence.ElementCollection;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,21 +18,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Playlist implements Serializable{
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
-    private String name;
 
     @Column(name = "owner_id", nullable = false)
     private Long ownerId;
 
     @Column
     private boolean isPrivate;
-    
-    @Transient
+
+    @Column
+    private String name;
+
+    @ElementCollection
     private List<Long> musicIds;
 
     public boolean getPrivacy(){

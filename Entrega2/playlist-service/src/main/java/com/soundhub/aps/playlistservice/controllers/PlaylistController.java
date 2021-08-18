@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/playlist")
-// @Controller
 public class PlaylistController {
     
     @Autowired
@@ -45,6 +44,7 @@ public class PlaylistController {
         ){
             service.createPlaylist(playlistName, isPrivate, ownerId);
 	}
+
     @GetMapping("/list")
     public List<Playlist> getPlaylistData(
     ){
@@ -57,7 +57,7 @@ public class PlaylistController {
         Long playlistId = Long.valueOf(id).longValue();
         PlaylistDTO play = service.getPlaylistById(playlistId);
         if(play != null){
-            List<Long> musics = play.getMusics();
+            List<Long> musics = play.getMusicIds();
             if(musics.size() != 0){
                 return musics;
             }
@@ -65,4 +65,3 @@ public class PlaylistController {
         return null;
     }
 }
-
