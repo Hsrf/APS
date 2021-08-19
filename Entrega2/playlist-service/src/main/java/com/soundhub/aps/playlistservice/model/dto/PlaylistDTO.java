@@ -1,14 +1,11 @@
 package com.soundhub.aps.playlistservice.model.dto;
 
-import java.util.List;
-
 import com.soundhub.aps.playlistservice.model.Playlist;
-import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
+import java.util.List;
 
 @Data
 public class PlaylistDTO {
-
     private Long id;
     private String name;
     private Long ownerId;
@@ -22,4 +19,5 @@ public class PlaylistDTO {
         this.musicIds = playlist.getMusics();
         this.ownerId = playlist.getOwnerId();
     }
+    
 }

@@ -1,4 +1,3 @@
-
 server:
   port: 8090
 spring:
@@ -8,7 +7,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/aps-user-service
     username: root
-    password: M3Usql.db
+    password: root
   jpa:
     hibernate:
       ddl-auto: update
@@ -20,7 +19,7 @@ spring:
     url: jdbc:mysql://localhost:3306/aps-user-service
     schemas: aps-user-service
     user: root
-    password: M3Usql.db
+    password: root
 eureka:
   client:
     service-url:

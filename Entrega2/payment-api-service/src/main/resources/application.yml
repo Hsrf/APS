@@ -1,13 +1,13 @@
 server:
-  port: 8200
+  port: 8600
 spring:
   application:
-    name: artist-service
+    name: payment-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/aps-artist-service
+    url: jdbc:mysql://localhost:3306/aps-payment-service
     username: root
-    password: root
+    password: M3Usql.db
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,11 +15,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-  flyway:
-    url: jdbc:mysql://localhost:3306/aps-artist-service
-    schemas: aps-artist-service
-    user: root
-    password: root
+
 eureka:
   client:
     service-url:

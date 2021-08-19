@@ -43,24 +43,15 @@
         <tr>
           <th>Music Id</th>
           <th>Music Name</th>
-          <!-- <th>Player</th> -->
         </tr>
         <tr th:each="doc:${docs}">
           <td th:text="${doc.id}"></td>
           <td th:text="${doc.name}"></td>
-          <button th:onclick="'parent.fetchMusic('+${doc.id}+');'">▶️</button>
-          <!-- <td th:text="${doc.docName}"/> -->
-          <!-- <td><a th:href="@{'/downloadFile/'+${doc.id}}">Download</a></td> -->
-          <!-- <td>
-            <audio controls id="playerTag">
-              <source th:src="@{'/music/'+${doc.id}}" type="audio/mpeg">
-            </audio>
-          </td> -->
+          <td>
+            <button th:onclick="'parent.fetchMusic('+${doc.id}+');'">▶️</button>
+          </td>
         </tr>
      </table>
-     <!-- <audio id="player" controls autoplay>
-      <source src="" id="player_source" type="audio/mpeg">
-    </audio> -->
    </div>
 
 </body>
