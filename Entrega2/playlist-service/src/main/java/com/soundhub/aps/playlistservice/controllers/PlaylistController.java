@@ -44,6 +44,14 @@ public class PlaylistController {
         ){
             service.createPlaylist(playlistName, isPrivate, ownerId);
 	}
+    @PostMapping("/uploadMusic")
+    public void uploadMusic(
+        @RequestParam("musicList") List<Long> musicList,
+        @RequestParam("ownerId") Long ownerId,
+        @RequestParam("playlistId") Long playId
+    ){
+            service.insertMusic(playId,ownerId,musicList);
+    }
 
     @GetMapping("/list")
     public List<Playlist> getPlaylistData(

@@ -25,11 +25,11 @@ public class PlaylistService {
         return new PlaylistDTO(playlist);
     }
 
-    // public void insertMusic(Long playlistId,List<Long> musicId){
-    //     Playlist playlist = repository.getById(playlistId);
-    //     playlist.insertMusics(musicId);
-    //     repository.save(playlist);
-    // }
+    public void insertMusic(Long playlistId, Long ownerId,List<Long> musicId){
+         Playlist playlist = repository.getById(playlistId);
+         playlist.insertMusics(musicId);
+         repository.save(playlist);
+    }
 
     public void createPlaylist(String newName, boolean isPrivate, Long ownerId){
         Playlist play = new Playlist();
@@ -47,7 +47,6 @@ public class PlaylistService {
             repository.save(playlist);
         }
     }
-
     public List<Playlist> getListPlaylist(Long id){
         return repository.findByownerId(id);
     }
