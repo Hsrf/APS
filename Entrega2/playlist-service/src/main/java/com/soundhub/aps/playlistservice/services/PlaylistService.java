@@ -1,13 +1,11 @@
 package com.soundhub.aps.playlistservice.services;
 
-import java.util.Optional;
 import java.util.List;
 import com.soundhub.aps.playlistservice.model.dto.PlaylistDTO;
-// import com.soundhub.aps.playlistservice.proxy.ArtistProxy;
+import com.soundhub.aps.playlistservice.proxy.MusicProxy;
 import com.soundhub.aps.playlistservice.repositories.PlaylistRepository;
 import com.soundhub.aps.playlistservice.model.Playlist;
 
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +15,8 @@ public class PlaylistService {
     @Autowired
     private PlaylistRepository repository;
 
-    // @Autowired
-    // private ArtistProxy proxy;
+    @Autowired
+    private MusicProxy proxy;
 
     public PlaylistDTO getPlaylistById(Long id){
         Playlist playlist = repository.getById(id);
@@ -49,6 +47,11 @@ public class PlaylistService {
     }
     public List<Playlist> getListPlaylist(Long id){
         return repository.findByownerId(id);
+    }
+
+    public List<String> listMusicsPlaylist(List<Long> ids){
+        Long[] aux = ids.stream().toArray(Long[]::new);
+        return proxy.getMusicsList(aux);
     }
 
     // public Optional<Playlist> getPlaylist(Long id){
