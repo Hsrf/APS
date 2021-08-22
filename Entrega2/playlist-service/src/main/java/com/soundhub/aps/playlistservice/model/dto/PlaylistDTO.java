@@ -10,6 +10,7 @@ public class PlaylistDTO {
     private String name;
     private Long ownerId;
     private boolean isPrivate;
+    private boolean isAlbum;
     private List<Long>musicIds;
 
     public PlaylistDTO(Playlist playlist) {
@@ -18,6 +19,7 @@ public class PlaylistDTO {
         this.isPrivate = playlist.getPrivacy();
         this.musicIds = playlist.getMusics();
         this.ownerId = playlist.getOwnerId();
+        this.isAlbum = playlist.getIsAlbum();
     }
     
 }

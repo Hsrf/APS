@@ -31,10 +31,16 @@ public class Playlist implements Serializable{
 
     @Column
     private String name;
+    
+    @Column
+    private boolean isAlbum;
 
     @ElementCollection
     private List<Long> musicIds;
 
+    public boolean getIsAlbum(){//Acho que n teria set, uma vez criada, é playlist ou album, e pronto.S
+        return this.isAlbum;
+    }
     public boolean getPrivacy(){
         return this.isPrivate;
     } 
