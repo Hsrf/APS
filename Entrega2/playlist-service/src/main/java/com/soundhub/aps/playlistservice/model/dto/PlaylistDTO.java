@@ -1,8 +1,10 @@
 package com.soundhub.aps.playlistservice.model.dto;
 
-import com.soundhub.aps.playlistservice.model.Playlist;
-import lombok.Data;
 import java.util.List;
+
+import com.soundhub.aps.playlistservice.model.Playlist;
+
+import lombok.Data;
 
 @Data
 public class PlaylistDTO {
@@ -20,6 +22,10 @@ public class PlaylistDTO {
         this.musicIds = playlist.getMusics();
         this.ownerId = playlist.getOwnerId();
         this.isAlbum = playlist.getIsAlbum();
+    }
+
+    public List<Long> getMusicIds(){
+        return this.musicIds;
     }
     
 }
