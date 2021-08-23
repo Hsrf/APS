@@ -8,12 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 import javax.persistence.ElementCollection;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Entity
 @Data
 @NoArgsConstructor
@@ -27,7 +28,7 @@ public class Playlist implements Serializable{
     private Long ownerId;
 
     @Column
-    private boolean isPrivate;
+    @Builder.Default private boolean isPrivate = false;
 
     @Column
     private String name;
