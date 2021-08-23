@@ -1,10 +1,8 @@
 package com.soundhub.aps.playlistservice.model.dto;
 
-import java.util.List;
-
 import com.soundhub.aps.playlistservice.model.Playlist;
-
 import lombok.Data;
+import java.util.List;
 
 @Data
 public class PlaylistDTO {
@@ -12,7 +10,7 @@ public class PlaylistDTO {
     private String name;
     private Long ownerId;
     private boolean isPrivate;
-    private List<Long> musicIds;
+    private List<Long>musicIds;
 
     public PlaylistDTO(Playlist playlist) {
         this.id = playlist.getId();
@@ -20,10 +18,6 @@ public class PlaylistDTO {
         this.isPrivate = playlist.getPrivacy();
         this.musicIds = playlist.getMusics();
         this.ownerId = playlist.getOwnerId();
-    }
-
-    public List<Long> getMusicIds(){
-        return this.musicIds;
     }
     
 }
