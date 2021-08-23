@@ -1,0 +1,32 @@
+version: '3'
+services: 
+  naming-server:
+    build:
+      context: naming-server
+    ports:
+      - 8671:8671
+  user-service:
+    build:
+      context: user-service
+    ports:
+      - 8090:8090
+  music-service:
+    build:
+      context: music-service
+    ports:
+      - 8100:8100
+  artist-service:
+    build:
+      context: artist-service
+    ports:
+      - 8200:8200
+  playlist-service:
+    build:
+      context: playlist-service
+    ports:
+      - 8500:8500
+  payment-api-service:
+    build:
+      context: payment-api-service
+    ports:
+      - 8600:8600
