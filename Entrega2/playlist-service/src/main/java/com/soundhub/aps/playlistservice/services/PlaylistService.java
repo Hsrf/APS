@@ -1,13 +1,12 @@
 package com.soundhub.aps.playlistservice.services;
 
-import java.util.Optional;
 import java.util.List;
+
+import com.soundhub.aps.playlistservice.model.Playlist;
 import com.soundhub.aps.playlistservice.model.dto.PlaylistDTO;
 // import com.soundhub.aps.playlistservice.proxy.ArtistProxy;
 import com.soundhub.aps.playlistservice.repositories.PlaylistRepository;
-import com.soundhub.aps.playlistservice.model.Playlist;
 
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

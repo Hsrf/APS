@@ -58,6 +58,16 @@
       "mainClass": "com.soundhub.aps.userservice.UserServiceApplication",
       "projectName": "user-service",
       "args": ""
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-PaymentApiServiceApplication<payment-api-service>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.payment.aps.paymentapiservice.PaymentApiServiceApplication",
+      "projectName": "payment-api-service",
+      "args": ""
     }
   ]
 }

@@ -39,12 +39,28 @@
       cursor: pointer;
     }
 
+    #loginButt {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 180px;
+      width: 100%;
+      font-weight: bold;
+      font-size: 15px;
+      transition: all linear 0.2s;
+      background: transparent;
+      margin: 0px 5px;
+      cursor: pointer;
+      height: 53px;
+    }
+    
+
     .buttonBlueBorder {
       border: 2px solid #1a1f71;
       color: #1a1f71;
     }
     .buttonBlueBorder:hover {
-      background: #1a1f71;
+      background: #1a1f71 !important;
       color: #ffffff;
     }
     .buttonBlueWithoutBorder {
@@ -109,9 +125,9 @@
       <form th:action="@{user/login}" method="post">
         <input placeholder="Email" type="email" name="email" />
         <input placeholder="Senha" type="password" name="password" />
-        <button class="buttonBlueBorder" type="submit" value="Login">
+        <a id="loginButt" class="buttonBlueBorder" href="http://localhost:8100/music/dashboard">
           Login
-        </button>
+        </a>
       </form>
     <a type="button" href="/user/new" class="buttonBlueWithoutBorder">Criar conta</button></a>
     <a type="button" href="/user/recover" class="buttonBlueWithoutBorder">Recuperar conta</button></a>
@@ -127,7 +143,7 @@
       </p>
 
       <img src="../images/participants.jpeg" />
-      <a class="centerText" href="http://localhost:8100/music/dashboard" target="_blank"
+      <a class="centerText" href="https://github.com/Hsrf/APS" target="_blank"
         >Repositorio GitHub</a
       >
 

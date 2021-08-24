@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Artists</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      font-family: "SF Display", "Inter", "Trebuchet MS", "Lucida Sans Unicode",
+        "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    }
+    h3 {
+      font-size: 25px;
+      padding: 15px;
+    }
+    th {
+      font-size: 18px;
+      padding: 15px;
+    }
+    span {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+  </style>
+  <body>
+    <div>
+      <h3>List of Artists in the System</h3>
+      <table>
+        <tr>
+          <th>Artist Id</th>
+          <th>Artist Name</th>
+        </tr>
+        <tr th:each="artist:${artistList}">
+          <td th:text="${artist.id}"></td>
+          <td th:text="${artist.name}"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

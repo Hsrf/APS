@@ -29,7 +29,7 @@
       outline: none;
     }
     a {
-        text-decoration: none !important; 
+      text-decoration: none !important;
     }
     button {
       min-width: 180px;
@@ -129,16 +129,43 @@
   <body>
     <div class="background">
       <div class="header">
-        <h1 class="sectionTitle">Soundhub</h1>
-        <a type="button" href="/" class="buttonBlueWithoutBorder">Minhas Playlists</a>
-        <a type="button" href="/music/list" class="buttonBlueWithoutBorder">Músicas</a>
-        <a type="button" href="http://localhost:8200/artist/" class="buttonBlueWithoutBorder">Artistas</a>
-        <a type="button" href="http://localhost:8090/user/change_email" class="buttonBlueWithoutBorder">Configurações</a>
-        <a type="button" href="http://localhost:8090/user/homepage" class="buttonBlueWithoutBorder">Sair</a>
+        <a href="http://localhost:8090/user/homepage"
+          ><h1 class="sectionTitle">Soundhub</h1></a
+        >
+        <a
+          type="button"
+          href="http://localhost:8500/playlist/list"
+          class="buttonBlueWithoutBorder"
+          >Minhas Playlists</a
+        >
+        <a type="button" href="/music/dashboard" class="buttonBlueWithoutBorder"
+          >Músicas</a
+        >
+        <a
+          type="button"
+          href="http://localhost:8200/artist/list"
+          class="buttonBlueWithoutBorder"
+          >Artistas</a
+        >
+        <a
+          type="button"
+          href="http://localhost:8090/user/change_email"
+          class="buttonBlueWithoutBorder"
+          >Configurações</a
+        >
+        <a
+          type="button"
+          href="http://localhost:8090/user/homepage"
+          class="buttonBlueWithoutBorder"
+          >Sair</a
+        >
       </div>
 
       <div class="content">
-        <iframe src="/music/list" style="width: 100%; border: none; min-height: 450px;"></iframe>
+        <iframe
+          src="/music/list"
+          style="width: 100%; border: none; min-height: 450px"
+        ></iframe>
       </div>
 
       <div class="footer">
@@ -146,7 +173,7 @@
         <div class="controlPanel">
           <button class="musicControls">⏮️</button>
           <audio id="player" controls autoplay>
-            <source src="" id="player_source" type="audio/mpeg">
+            <source src="" id="player_source" type="audio/mpeg" />
           </audio>
           <button class="musicControls">⏭️</button>
         </div>

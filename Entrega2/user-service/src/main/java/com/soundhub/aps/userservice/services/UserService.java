@@ -1,11 +1,10 @@
 package com.soundhub.aps.userservice.services;
 
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
 import com.soundhub.aps.userservice.model.User;
 import com.soundhub.aps.userservice.model.dto.UserDTO;
 import com.soundhub.aps.userservice.repositories.UserRepository;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,6 +3,7 @@ package com.soundhub.aps.artistservice.services;
 import com.soundhub.aps.artistservice.model.Artist;
 import com.soundhub.aps.artistservice.repositories.ArtistRepository;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,5 +19,9 @@ public class ArtistService {
         repository.save(newArtist);
         System.out.println("Qntd artistas no banco: "+ repository.count());
     
+    }
+
+    public List<Artist> listArtists(){
+        return repository.findAll();
     }
 }
