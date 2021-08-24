@@ -1,0 +1,46 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    container_name: mysql-container
+    command: --default-authentication-plugin=mysql_native_password
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: database
+      MYSQL_USER: app
+      MYSQL_PASSWORD: exemplo
+    volumes:
+      - /var/lib/mysql
+    restart: always
+    ports: 
+      - "3307:3306"
+  naming-server:
+    build:
+      context: naming-server
+    ports:
+      - 8671:8671
+  user-service:
+    build:
+      context: user-service
+    ports:
+      - 8090:8090
+  music-service:
+    build:
+      context: music-service
+    ports:
+      - 8100:8100
+  artist-service:
+    build:
+      context: artist-service
+    ports:
+      - 8200:8200
+  playlist-service:
+    build:
+      context: playlist-service
+    ports:
+      - 8500:8500
+  payment-api-service:
+    build:
+      context: payment-api-service
+    ports:
+      - 8600:8600
