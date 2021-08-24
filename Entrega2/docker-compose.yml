@@ -1,4 +1,4 @@
-version: '3'
+version: '2.4'
 services:
   db:
     image: mysql
@@ -14,34 +14,61 @@ services:
     restart: always
     ports: 
       - 3306:3306
+    restart: on-failure
   naming-server:
     build:
       context: naming-server
     ports:
       - 8671:8671
       - 8888:8888
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8671"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    restart: on-failure
   user-service:
     build:
       context: user-service
     ports:
       - 8090:8090
+    restart: on-failure
+    depends_on: 
+      naming-server:
+        condition: service_healthy
   music-service:
     build:
       context: music-service
     ports:
       - 8100:8100
+    restart: on-failure
+    depends_on: 
+      naming-server:
+        condition: service_healthy
   artist-service:
     build:
       context: artist-service
     ports:
       - 8200:8200
+    restart: on-failure
+    depends_on: 
+      naming-server:
+        condition: service_healthy
   playlist-service:
     build:
       context: playlist-service
     ports:
       - 8500:8500
+    restart: on-failure
+    depends_on: 
+      naming-server:
+        condition: service_healthy
   payment-api-service:
     build:
       context: payment-api-service
     ports:
       - 8600:8600
+    restart: on-failure
+    depends_on: 
+      naming-server:
+        condition: service_healthy

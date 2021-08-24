@@ -22,7 +22,5 @@ spring:
     password: exemplo
 eureka:
   client:
-    registerWithEureka: false
-    fetchRegistry: false
     service-url:
       defaultZone: http://naming-server:8671/eureka
