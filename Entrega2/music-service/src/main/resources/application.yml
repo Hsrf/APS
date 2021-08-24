@@ -33,8 +33,9 @@ spring:
   #     schemas: aps-music-service
   #     user: root
   #     password:
-
 eureka:
   client:
+    registerWithEureka: false
+    fetchRegistry: false
     service-url:
-      defaultZone: http://localhost:8671/eureka
+      defaultZone: http://naming-server:8671/eureka

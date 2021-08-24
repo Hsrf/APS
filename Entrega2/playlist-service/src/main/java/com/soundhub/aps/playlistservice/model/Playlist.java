@@ -13,10 +13,12 @@ import javax.persistence.ElementCollection;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Builder
 @Entity
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class Playlist implements Serializable{
 

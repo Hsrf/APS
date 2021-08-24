@@ -5,9 +5,9 @@ spring:
     name: artist-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/aps-artist-service
-    username: root
-    password: root
+    url: jdbc:mysql://db/database
+    username: app
+    password: exemplo
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,12 +15,15 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-  # flyway:
-  #   url: jdbc:mysql://localhost:3306/aps-artist-service
-  #   schemas: aps-artist-service
-  #   user: root
-  #   password: root
+  flyway:
+    url: jdbc:mysql://db/database
+    schemas: aps-artist-service
+    user: app
+    password: exemplo
 eureka:
   client:
+    registerWithEureka: false
+    fetchRegistry: false
     service-url:
-      defaultZone: http://localhost:8671/eureka
+      defaultZone: http://naming-server:8671/eureka
+
